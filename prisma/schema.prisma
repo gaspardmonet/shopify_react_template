@@ -1,0 +1,40 @@
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id                   String   @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+  email                String   @unique
+  password             String
+  stripeId             String
+  isSubscriptionActive String
+}
+
+model UserPlan {
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  price_id        String
+  session_id      String
+  user_id         String
+  subscription_id String
+}
+
+model Session {
+  session_id  String    @id @default(auto()) @map("_id") @db.ObjectId
+  id          String    @unique
+  shop        String
+  state       String
+  isOnline    Boolean   @default(false)
+  scope       String?
+  expires     DateTime?
+  accessToken String
+  userId      BigInt?
+}
