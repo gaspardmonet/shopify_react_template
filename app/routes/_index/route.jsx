@@ -32,8 +32,11 @@ export const loader = async ({ request }) => {
       const session = await prisma.userPlan.findFirst({
         where: { user_id: user.id, price_id: lineItems?.data[0]?.price?.id },
       });
+      const checkPlan = await prisma.userPlan.findFirst({
+        where: { user_id: user.id },
+      });
       if (!session) {
-        if (session?.session_id !== id) {
+        if (checkPlan?.session_id !== id) {
           await updatePlan({
             price_id: lineItems?.data[0]?.price?.id,
             session_id: id,
@@ -80,10 +83,10 @@ export const action = async ({ request }) => {
 
 export default function Index() {
   const { user, session } = useLoaderData();
-
+  console.log(session);
   const handleClick = async (id) => {
     try {
-      if (session == null || session?.price_id !== id) {
+      if (session?.price_id !== id) {
         const session = await stripe.checkout.sessions.create({
           success_url:
             "http://localhost:54764?success=true&session_id={CHECKOUT_SESSION_ID}",

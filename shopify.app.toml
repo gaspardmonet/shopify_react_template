@@ -2,7 +2,7 @@
 
 name = "efficient-customer-app"
 client_id = "159d63e0445f71208173b8a4530d5916"
-application_url = "https://ftp-houses-level-assured.trycloudflare.com"
+application_url = "https://sense-considerable-disease-combo.trycloudflare.com"
 embedded = true
 
 [access_scopes]
@@ -11,10 +11,10 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://ftp-houses-level-assured.trycloudflare.com/auth/callback",
-  "https://ftp-houses-level-assured.trycloudflare.com/auth/shopify/callback",
-  "https://ftp-houses-level-assured.trycloudflare.com/api/auth/callback",
-  "https://ftp-houses-level-assured.trycloudflare.com/.shopify/graphiql/auth/callback"
+  "https://sense-considerable-disease-combo.trycloudflare.com/auth/callback",
+  "https://sense-considerable-disease-combo.trycloudflare.com/auth/shopify/callback",
+  "https://sense-considerable-disease-combo.trycloudflare.com/api/auth/callback",
+  "https://sense-considerable-disease-combo.trycloudflare.com/.shopify/graphiql/auth/callback"
 ]
 
 [webhooks]
